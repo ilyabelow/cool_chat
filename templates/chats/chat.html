@@ -1,0 +1,33 @@
+{% extends 'chats/base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Чат с {{ companion }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="msg">
+        {% for msg in messages %}
+            {% if g.user == msg['author'] %}
+                <div left>
+                    {{ msg["text"] }}
+                </div>
+            {% else %}
+                <div right {{ 'unread'* msg['unread'] }} >
+                    {{ msg["text"] }}
+                </div>
+            {% endif %}
+            <br/>
+            <br/>
+
+        {% endfor %}
+        <br/>
+    </div>
+
+    <div class="msg_send">
+        <textarea name="msg" form="sendmsg"></textarea>
+        <form method="post" autocomplete="nopls" id="sendmsg">
+            <input type="submit" value="Отправить!">
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+<!doctype html>
+<head>
+    <title>{% block title %}{% endblock %} - Крутой Чат</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+
+<nav>
+    <h1>Крутой чат</h1>
+    <ul>
+        <li><a href="{{ url_for('chats.home') }}">Домой</a>
+        <li><a href="{{ url_for('auth.logout') }}">Выйти</a>
+        <li>{{ g.user }}
+
+    </ul>
+</nav>
+
+<header>
+    {% block header %}{% endblock %}
+</header>
+
+{% for message in get_flashed_messages() %}
+    <p class="error">{{ message }}</p>
+{% endfor %}
+
+{% block content %} {% endblock %}
+
+</body>

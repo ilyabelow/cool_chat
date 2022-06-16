@@ -1,0 +1,25 @@
+{% extends 'auth/auth.html' %}
+
+
+{% block header %}
+    <h1>{% block title %}Вход{% endblock %}</h1>
+{% endblock %}
+
+{% block form %}
+    <form method="post">
+        <label for="username">Имя</label>
+        <br/>
+        <input name="username" id="username" required>
+        <br/>
+        <br/>
+        <label for="password">Пароль</label>
+        <br/>
+
+        <input type="password" name="password" id="password" required>
+        <br/>
+        <br/>
+        <input type="submit" value="Войти">
+    </form>
+{% endblock %}
+
+{% block alt %}Ещё не зарегистрированы? <a href="{{ url_for("auth.register") }}">Регистрация</a>{% endblock %}

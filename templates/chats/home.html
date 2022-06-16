@@ -1,0 +1,36 @@
+{% extends 'chats/base.html' %}
+
+
+{% block header %}
+    <h1><span style="float: left">{% block title %}Чаты{% endblock %}</span></h1>
+    <p><span style="float: right"> <a href="{{ url_for("chats.add") }}">Добавить чат</a></span></p>
+{% endblock %}
+
+{% block content %}
+
+    <br/>
+    {% for chat in chats %}
+        <div class="chat" {{ 'unread' * chat['unread'] }}>
+
+            <div>
+                <a href="{{ url_for("chats.chat", companion=chat['companion']) }}"><span
+                        style="float: left">{{ chat['companion'] }}</span>
+                </a><span style="float: right">{{ chat['time'] }}</span>
+            </div>
+
+            <br/>
+            {% if 'message' in chat %}
+
+                {% if chat['author'] == g.user %}
+                    <p left> > {{ chat['message'] }}</p>
+                {% else %}
+                    <p right>{{ chat['message'] }} < </p>
+                {% endif %}
+            {% else %}
+                <p center>(Пока не было ни одного сообщения)</p>
+            {% endif %}
+        </div>
+        <br/>
+    {% endfor %}
+
+{% endblock %}

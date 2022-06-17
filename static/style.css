@@ -110,23 +110,31 @@ body {
 }
 
 .msg div {
+    width: 100%;
+    overflow: auto;
+}
+
+
+.msg div div {
+    width: fit-content;
+    overflow: unset;
     background: azure;
     border-radius: 10px;
     padding: 10px;
 }
 
 
-.msg div[unread] {
+.msg div div[unread] {
     background: aquamarine;
 }
 
 
-.msg div[left] {
+.msg div div[left] {
     text-align: right;
     float: left
 }
 
-.msg div[right] {
+.msg div div[right] {
     text-align: left;
     float: right
 }

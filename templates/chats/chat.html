@@ -7,6 +7,7 @@
 {% block content %}
     <div class="msg">
         {% for msg in messages %}
+            <div >
             {% if g.user == msg['author'] %}
                 <div left>
                     {{ msg["text"] }}
@@ -16,13 +17,11 @@
                     {{ msg["text"] }}
                 </div>
             {% endif %}
-            <br/>
-            <br/>
-
+            </div>
         {% endfor %}
-        <br/>
-    </div>
 
+    </div>
+    <br/>
     <div class="msg_send">
         <textarea name="msg" form="sendmsg"></textarea>
         <form method="post" autocomplete="nopls" id="sendmsg">
